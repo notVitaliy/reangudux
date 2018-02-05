@@ -9,13 +9,23 @@ export interface INgRedux {
   subscribe(listener: Function): Function
 }
 
-export interface NgReactComponent extends React.ComponentClass {
+export interface NgReactComponent<Props> extends React.ComponentClass<Props> {
   data?: (state: any) => {}
   methods?: () => {}
 }
 
-export function reangudux(Class: NgReactComponent): IComponentOptions {
-  class NgClass<Props extends { [k: string]: any } = {}> {
+export function reangudux<Props>(
+  Class: NgReactComponent<Props>,
+  bindingNames: (keyof Props)[] | null = null,
+): IComponentOptions {
+  const names = bindingNames || (Class.propTypes && Object.keys(Class.propTypes)) || []
+
+  const bindings = names.reduce((obj: any, key) => {
+    obj[key] = '<'
+    return obj
+  }, {})
+
+  class NgClass {
     public props: Partial<Props> = {} as Partial<Props>
 
     private reduxUnsubscribe: Function
@@ -34,7 +44,7 @@ export function reangudux(Class: NgReactComponent): IComponentOptions {
     }
 
     render() {
-      render(<Class {...this.props} />, this.$element[0])
+      render(<Class {...this.props as any} />, this.$element[0])
     }
 
     setState() {
@@ -56,6 +66,7 @@ export function reangudux(Class: NgReactComponent): IComponentOptions {
   }
 
   return {
+    bindings,
     controller: NgClass,
   }
 }
