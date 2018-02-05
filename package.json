@@ -1,0 +1,26 @@
+{
+  "name": "reangudux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.tsx",
+  "scripts": {
+    "build": "npm run clean; tsc -d -t es5",
+    "clean": "rm ./*.d.ts; rm ./*.map; exit 0"
+  },
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "angular": ">=1.5",
+    "ng-redux": ">=3.5",
+    "react": ">=15",
+    "react-dom": ">=15",
+    "redux": ">=3.5"
+  },
+  "devDependencies": {
+    "@types/angular": "^1.6.42",
+    "@types/react": "^16.0.36",
+    "@types/react-dom": "^16.0.3",
+    "@types/redux": "^3.6.0",
+    "typescript": "^2.7.1"
+  }
+}
