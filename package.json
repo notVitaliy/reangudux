@@ -1,8 +1,8 @@
 {
   "name": "reangudux",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.tsx",
+  "main": "index.js",
   "scripts": {
     "build": "npm run clean; tsc -d -t es5",
     "clean": "rm ./*.d.ts; rm ./*.map; exit 0"
