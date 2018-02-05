@@ -1,14 +1,14 @@
 {
   "name": "reangudux",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npm run clean; tsc -d -t es5",
     "clean": "rm ./*.d.ts; rm ./*.map; exit 0"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "notVitaliy <visikov@gmail.com>",
+  "license": "MIT",
   "peerDependencies": {
     "angular": ">=1.5",
     "ng-redux": ">=3.5",
@@ -22,5 +22,9 @@
     "@types/react-dom": "^16.0.3",
     "@types/redux": "^3.6.0",
     "typescript": "^2.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh@github.com:notVitaliy/reangudux.git"
   }
 }
