@@ -35,6 +35,7 @@ export function reangudux<Props>(
     $onInit() {
       this.setActions()
       this.setState()
+      this.setBoundProps()
       this.render()
 
       this.reduxUnsubscribe = this.$ngRedux.subscribe(() => {
@@ -57,6 +58,15 @@ export function reangudux<Props>(
       if (!Class.methods) return
       const boundActions = bindActionCreators(Class.methods(), this.$ngRedux.dispatch)
       this.props = Object.assign({}, this.props, boundActions)
+    }
+
+    setBoundProps() {
+      if (!names.length) return
+      const boundProps = names.reduce((obj: any, key) => {
+        obj[key] = this[key]
+        return obj
+      }, {})
+      this.props = Object.assign({}, this.props, boundProps)
     }
 
     $onDestroy() {
