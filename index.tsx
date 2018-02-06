@@ -63,7 +63,7 @@ export function reangudux<Props>(
     setBoundProps() {
       if (!names.length) return
       const boundProps = names.reduce((obj: any, key) => {
-        obj[key] = this[key]
+        obj[key] = (this as any)[key]
         return obj
       }, {})
       this.props = Object.assign({}, this.props, boundProps)
